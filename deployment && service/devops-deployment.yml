@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-303
+  namespace: devops
+  labels:
+    app: devops-303
+    tier: devops
+spec:
+  selector:
+    matchLabels:
+      app: devops-303
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: devops-303
+    spec:
+      containers:
+        - name: devops-303
+          image: devops-303-2021b3-dev_app
+          ports:
+            - containerPort: 8884
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
